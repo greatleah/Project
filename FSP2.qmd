@@ -1,0 +1,447 @@
+---
+title: "Field Service Project"
+format: html
+author: "Park Jooyeon"
+editor: visual
+date: 08/29/2024
+date-format: "MMM D, YYYY"
+execute:
+  echo: false
+  warning: false
+---
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+setwd("/Users/JOOYEON/R/lesson/")
+```
+
+## 1. Report Objectives
+
+Given the structure of the family office industry, Relationship Managers (RM) play a vital role in ensuring the sustainable revenue of Raffles Family Office (RFO). In this report, a focus will be placed on improving the talent acquisition processes through tailored marketing strategies to ultimately increase RFO's revenue. The problem statement that we will be working on is: **How to optimise Raffles Family Office's current marketing strategies to increase the company's recruitment rate.** This report is intended to present our research findings and analysis in the family office space, identifying marketing strategies for RFO to increase brand recognition which in turn improves the talent acquisition and retainment processes, to ultimately achieve the group target of a 200% increase in headcount size in the next 18 months. Furthermore, the team will include new insights and further recommendations for the sustainability of this project, to further refine RFO's marketing strategies so that it can achieve greater results in increasing its brand awareness and candidate conversion rate while considering the feasibility of implementation and budget.
+
+## 2. About Raffles Family Office
+
+Raffles Family Office (RFO) is a distinguished commercial Multi-Family Office (MFO), renowned for its exceptional suite of investment management services tailored exclusively for ultra-high-net-worth individuals (UHNWI). At the heart of RFO's offering is an integrated platform that seamlessly combines independence with unparalleled advisory expertise, spanning a wide spectrum of asset classes. This distinctive approach, coupled with an extensive global partnership network, positions RFO as a premier provider of comprehensive, enduring, and highly personalised wealth growth and preservation solutions.
+
+### 2.1 Award-Winning Excellence
+
+RFO has garnered recognition and accolades for its commitment to excellence in wealth management, making it a trusted choice for discerning ultra-high-net-worth clients seeking superior financial services.
+
+### 2.2 Comprehensive Services
+
+RFO offers a full suite of services encompassing investment management, estate planning, tax optimisation, risk management, and more. This comprehensive approach ensures that every facet of a client's financial well-being is meticulously addressed.
+
+### 2.3 Independence and Expertise
+
+The firm's independence allows it to act in the best interests of its clients, free from conflicts of interest. This, combined with its team of seasoned advisors, ensures that clients receive expert guidance and strategies tailored to their unique needs.
+
+### 2.4 Global Partnership Network
+
+RFO has cultivated a strategic network of global partnerships with leading financial institutions. This network facilitates seamless collaboration, enabling RFO to access a wealth of resources and insights to benefit its clients.
+
+### 2.5 Asian Presence
+
+Headquartered in the dynamic financial hub of Hong Kong, RFO extends its reach across Asia with branch offices strategically located in key financial centres, including Singapore, Shanghai, Beijing, and Taipei. This regional presence underscores its commitment to serving the multi-jurisdictional needs of clients in the Asia-Pacific region.
+
+## 3.The Family Office Landscape
+
+The family office industry in North America and Europe has matured significantly over the last few decades, with well-established family offices serving a wide array of ultra-high net worth individuals and families. These regions have a long history of wealth accumulation and have developed sophisticated financial ecosystems to support the industry. In contrast, Asia is witnessing a nascent and burgeoning family office space. With the rapid economic growth in countries like China, India, and Singapore, there is a growing cohort of high-net-worth individuals seeking professional wealth management services. This has led to a surge in the establishment of family offices in Asia, making it a dynamic and evolving landscape with immense growth potential. As Asian economies continue to expand, the family office industry in the region is poised for substantial development and transformation in the years to come.
+
+### 3.1 Asia’s Family Office Hub
+
+Singapore holds a pivotal role as Asia's family office hub for several compelling reasons. The country’s political stability, robust regulatory framework, and adherence to the rule of law have fostered an environment of trust and security for high-net-worth individuals and families seeking to manage and grow their wealth. Additionally, Singapore's strategic geographical location, at the crossroads of key Asian markets, makes it an ideal gateway for investment and wealth diversification. The city-state's financial infrastructure, including a well-established banking sector and a growing ecosystem of family offices and wealth management firms, offers a wide range of services tailored to the unique needs of affluent clients. Moreover, Singapore's commitment to innovation and technology ensures that it remains at the forefront of financial services, further solidifying its position as Asia's preeminent family office hub.
+
+### 3.2 Roles of a Family Office
+
+*“Shirtsleeves to shirtsleeves in three generations.”*
+
+UHNWI may prefer a family office over a private bank for a multitude of reasons. One key factor is the emphasis on family governance and wealth succession planning. Family offices specialise in designing and implementing strategies to ensure the seamless transfer of wealth from one generation to the next. They play a pivotal role in fostering family harmony by facilitating open communication, defining roles and responsibilities, and establishing governance structures that align with the family's values and long-term goals. Moreover, family offices provide exclusive access to investment opportunities that are typically reserved for close networks, ensuring that their clients can access the best deals available. This combination of personalised wealth management, generational continuity, and privileged access to opportunities makes family offices an attractive choice for UHNWI looking to preserve and grow their wealth while safeguarding family unity.
+
+MFO also provides significant economies of scale compared to a single-family office, with estimated operation costs often exceeding USD one million annually. This substantial expenditure covers a range of expenses, including staffing, technology, compliance, and administrative overhead. By pooling their resources with other affluent families, clients of MFOs can access world-class investment managers and opportunities that might otherwise be out of reach. This collective approach provides access to top-tier talent and diversified investment portfolios, leading to potentially superior returns and risk mitigation. However, it is worth noting that this collaborative model may involve slightly less privacy compared to single-family offices. Nevertheless, the advantages of enhanced investment capabilities and cost-effectiveness often outweigh the trade-off in privacy concerns, making MFOs a pragmatic choice for wealth management.
+
+### 3.3 Business Model
+
+The business model of a family office is built upon a diversified revenue structure. A core component of this model is the management fees, which is levied on assets under management (AUM). This fee compensates the family office for ongoing wealth management services. Another revenue driver is the performance fee, often structured with a hurdle rate on investments, ensuring that the clients’ interest is aligned with the family office. Additionally, the family office may generate income through service-related fees, such as those associated with facilitating the establishment of financial structures like variable capital companies and private foundations. This multifaceted approach to revenue generation allows commercial MFOs to provide comprehensive services while sustaining their operations through various income streams.
+
+### 3.4 Industry Challenges
+
+“When you have seen one family office, you have seen one family office.”
+
+As RFO aims to expand its footprint in Singapore, it confronts specific challenges that demand innovative marketing strategies for resolution against the backdrop of a nascent family office industry. Firstly, RFO must address the issue of unfamiliarity among potential private wealth principals regarding the operation know-how and benefits of a family office, primarily attributed to concerns over the sector's opaque structure. Secondly, overcoming the stickiness of top bankers who are entrenched in private banks and managing substantial private wealth requires strategic marketing efforts to demonstrate the advantages of RFO's services. Lastly, RFO must navigate the challenge of competing in a market where some competitors maintain a secretive image, potentially leading to suspicions. The optimisation of RFO's existing marketing strategies will therefore play a pivotal role in fostering transparency, trust, and client education to overcome these obstacles and in turn attract new private wealth. 
+
+## 4. Situation Analysis
+
+Our team conducted a modified, comprehensive 5C situation analysis (Steenburgh & Avery, 2010) of the family office industry in Singapore: Company, Competitors, Candidates, Collaborators, and Climate. This in-depth examination involved a thorough review of market dynamics, regulatory frameworks, competitive landscapes, and emerging trends within the wealth management sector. We also gathered insights through interviews and surveys with key appointment holders in RFO, including Managing Partners, Marketing and Communications (MarComms) team and Talent Acquisition team. This rigorous assessment allowed us to gain a nuanced understanding of the challenges, opportunities and unique characteristics shaping the family office landscape in Singapore. Armed with this knowledge, our strategic recommendations in the later part of the report aim to drive RFO’s efforts towards achieving its expansion goals of attracting new private wealth.
+
+### 4.1 Company
+
+#### 4.1.1 Goals and Objectives
+
+RFO is committed to achieving its ambitious growth targets through effective allocation of resources and a firm-wide alignment of mentality. This approach fosters a culture that is growth-driven, adaptable, and solution-focused, ensuring that every facet of the organisation is dedicated to expanding its headcount by 200% in the next 18 months. This growth objective, by extension, aims to significantly increase the firm’s AUM, reaffirming RFO's position as the leading MFO in Asia.
+
+#### 4.1.2 Position
+
+RFO strategically positions itself through a well-rounded marketing mix. The firm leverages press coverage to enhance its visibility and credibility, utilises social media channels for client engagement and outreach, hosts corporate and client events to foster relationships, invests in branding initiatives for a strong market presence, and actively participates in speaking engagements to establish thought leadership within the industry. RFO’s strategic positioning is also characterised by a commitment to authenticity and credibility. Unlike many in the industry, the firm refrains from sponsorships and paid content, relying solely on earned opportunities. RFO thus maximises its visibility and influence while emphasising a philosophy of "minimum input, maximum results". These efforts collectively reinforce RFO's position as a trusted and prominent player in the wealth management sector.
+
+#### 4.1.3 Performance
+
+RFO's performance in recent years has been remarkable. In the first half of 2023, the firm achieved significant growth, with a 100% increase in headcount compared to its baseline in 2022. This impressive performance underscores RFO's ability to execute its expansion plans effectively and attract top talent in the industry, positioning it for further success in the wealth management landscape.
+
+#### 4.1.4 Product Line
+
+RFO offers a comprehensive suite of services covering eight asset classes, including the newly introduced real estate and digital assets pillars. This diverse product line ensures that clients have access to a wide range of investment options and strategies tailored to their unique financial goals and risk profiles. RFO's commitment to continuously expanding and enhancing its product offerings underscores its dedication to meeting the needs of both first generation and next generation clients.
+
+### 4.2 Competitors
+
+A competitor analysis was conducted to evaluate RFO’s relative position in relation to other players in the MFO space. The analysis aims to understand RFO's strengths, weaknesses, and value proposition in comparison to its competitors while identifying opportunities to improve its marketing outreach.
+
+The analysis will mainly focus on results collected from LinkedIn, which is one of the popular social media platforms utilised by family offices around the world (Horan et al., 2014), to gain some insight into MFO competitors which operate privately with minimal information shared publicly.
+
+For this report, we categorised RFO’s competitors into two main segments: Asia-focused and North America-focused MFOs. The categorisation would drive more in-depth analyses with the Asia-focused MFOs allowing for assessment of RFO’s position amongst its close peers that are similarly based in Asia, while the more established North America-focused MFOs would highlight areas of improvement that RFO can learn from. Through focus group discussions with RFO (Appendix A), we have identified a total of nine Asia-focused and five North America-focused MFO competitors (Figure 1).
+
+![*Figure 1: RFO and its MFO Competitors*](image1.png){width=50%}
+
+#### 4.2.1 Research Methodology and Limitations
+
+To ensure fairness in the data-gathering methodology, all raw data from LinkedIn was collected on 6 September 2023. Number of LinkedIn likes, comments, and reposts were also collected over the same 6-months period from January 2023 to June 2023, when all competitors had an active online presence. Data crawling was also performed manually as it was impossible to gain access into the administrative settings of other MFOs on LinkedIn, which would allow easy exportation of statistics.
+
+Hence, due to the private nature of MFOs, there may be discrepancies in accuracy of data collected. There may also be some variations in RFO’s competitive standing and trends charted as some Asia-focused MFOs have higher frequency of posts after July 2023, which was out of research scope.
+
+#### 4.2.2 Physical Reach and Online Reach
+Firstly, we analysed the MFO’s geographic presence, specifically the locations of their branch offices, through information stated on their respective websites (Appendix C).
+
+The geographical locations of each MFO are suggestive of the regions that their main clients are located in. For North America-focused MFOs, the majority of their physical presence is concentrated in North America and Europe. Notably, Leo Wealth stands out from the North America-focused MFOs, going beyond America with international offices in Singapore, Hong Kong, and Japan (Appendix C). On the other hand, Asia-focused MFOs primarily maintain a presence within Asia although there are some exceptions like Taurus Wealth which has established offices not only in Singapore but also in Dubai and Europe, displaying a more diverse global reach. 
+
+Given that RFO operates as an Asia-focused MFO, we will zoom into the Asia-focused counterparts for a more comprehensive comparison. RFO’s extensive presence with multiple offices across the region is a notable advantage held by the MFO compared to its regional competitors. While many of its competitors maintain offices exclusively in Singapore and/or Hong Kong, RFO has strategically positioned offices in key financial centres including Taiwan, Shanghai, and Beijing (Figure 2). This strategic expansion into major cities across China is particularly significant for RFO as it opens doors to one of the fastest growing economies in the world (Cree, 2010). Hence, RFO has the first-mover advantage in establishing a strong presence in China which positions the family office favourably to tap into the burgeoning wealth management opportunities within the region. 
+
+
+![*Figure 2: RFO’s Geographical Reach in terms of Office Locations (Appendix C)*](image2.png){width=50%}
+
+Furthermore, with the Internet and social media, there is more to a family office’s presence than its physical offices. An analysis on follower count was conducted to find out each MFO’s online reach. As seen in Figure 3, RFO currently ranks as the fourth largest MFO in the social media space. While this is a noteworthy achievement suggestive of RFO’s top ranking within the MFO industry, it is still indicative of areas where further improvements can be made to enhance engagement with its audience.
+
+```{r}
+data_4_4_2 <- read.csv("/Users/JOOYEON/R/lesson/data_4_4_2.csv")
+
+# Plot
+data_4_4_2 %>% 
+  ggplot(aes(x = reorder(MFO, -Follower.Count..Thousands.),
+             y = Follower.Count..Thousands.,
+             fill = Locale)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = c("red","blue","green")) +
+  labs(title = "LinkedIn Follower Count",
+       x = "Name of Multi-Family Office",
+       y = "LinkedIn Follower Counts (Thousands)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "bottom") # Move legend to the bottom
+```
+
+Interestingly, North America-focused MFOs tend to have a larger number of LinkedIn followers compared to their Asia-focused counterparts (Figure 3). This could be attributed to the long-standing history of family offices in North America, which would have provided these MFOs with a longer time to build up their followings and public awareness prior to the rise of LinkedIn, in comparison to their Asian counterparts which are relatively new (Hubbis, 2019). Notably, with the exception of Carret Private, which recently acquired Endowus and consequently absorbed Endowus’s followers, several Hong Kong-headquartered MFOs have a relatively lower LinkedIn follower count. In light of this, it is evident that RFO has achieved commendable progress in its online presence despite being an Asia-focused, Hong Kong-headquartered MFO.
+
+Overall, RFO is well positioned against its close Asia-focused MFO competitors with its sizeable LinkedIn reach and strategic operating locations. However, more can be done to tap on RFO’s strengths and grow its online presence which will be addressed in the later parts of the report.
+
+#### 4.2.3 Online Engagement
+Although follower count is one of the key criteria that companies use to assess their social media marketing campaigns, latest research from Wies et al’s journal article ‘Finding Goldilocks Influencers: How Follower Count Drives Social Media Engagement’ (2023) shows that engagement rates do not exponentially increase with follower count. Hence, an analysis of the relationship between LinkedIn follower count and active engagement has been conducted. In this context, ‘engagement’ refers to the total number of likes, comments and reposts garnered by each MFO’s LinkedIn posts between January 2023 to July 2023 while ‘active engagement’ refers to the ratio of each MFO’s average monthly engagement against their overall follower count. 
+
+Evidently, the graph reflects Wies et al (2023)’s findings as MFOs with the highest follower count, like Stonehage Fleming and Rockefeller Capital Management, have a lower active engagement rate than Topaz and Wisdom Family Offices which have the least number of followers (Figure 4). In the same regard, RFO’s active engagement rate has been outperformed by at least five of its competitors (Figure 4). Even with its high follower count which gives RFO access to a larger audience pool, not all followers will actively keep up and engage with content posted due to reasons like lack of interest. Thus, there is a strong implication that RFO’s current LinkedIn marketing strategies are inadequate.
+
+```{r}
+data_4_2_3 <- read.csv("/Users/JOOYEON/R/lesson/data_4_2_3 copy.csv")
+data_4_2_3 <- data_4_2_3 %>% 
+  mutate(Active_Engagement = 100*Active_Engagement)
+
+# Plot
+data_4_2_3 %>% 
+  ggplot(aes(x = reorder(MFO, -Follower_Count),
+             y = Follower_Count,
+             fill = Locale)) +
+  geom_bar(stat = "identity") +
+  geom_point(aes(y= Active_Engagement/0.5), size = 2, color = "orange") +
+  scale_fill_manual(values = c("red","blue","green")) +
+  labs(title = "LinkedIn: Follower Count vs Active Engagement",
+       x = "",
+       y = "LinkedIn Follower Counts (Thousands)") +
+  scale_y_continuous(limits = c(0,40),
+                     sec.axis = sec_axis(~. *0.5, name = "Active Engagement(%)")) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "bottom") # Move legend to the bottom
+```
+
+Figure 4: Relationship between LinkedIn Follower Count and Active Engagement Rate
+
+An interesting relationship can also be observed as there seems to be an inverted U-shaped curve emerging from the rate of active engagement as follower count decreases in the MFOs (Figure 4). This corroborates with “the inverted U-shaped relationship” suggested by Wies et al (2023) in their journal article; “a higher follower count implies broader reach but also cues a weaker relationship that reduces followers’ engagement likelihood, that is, engagement first increases, then decreases, as influencer follower count rises”. This implies that at low to moderate follower counts, the positive effect on reach dominates by exposing more followers to content, and overall engagement improves. But as follower count increases, the positive effect becomes outweighed by the negative engagement likelihood effect, which leaves followers less motivated to engage with the brand’s content, and overall engagement decreases. Thus, following the inverted U-shaped relationships exhibited in Figure 5, RFO is currently positioned at the right end of the curve with high number of followers but garnering lower than expected rates of active engagement. 
+
+![*Figure 5: Weis et al (2023)’s Interaction Plots for Campaign Properties (Indegree: Follower Count)*](image3.png){width=50%}
+
+Hence, RFO’s MarComms team should review and change their current marketing strategies to tap into the family office’s unrealised segment of engagement. Although results may be slightly inflated due to the possibility of double counting (since the same person can like, comment, and repost on the same LinkedIn post), there is still significance in the findings gathered. Instead of repeatedly posting similar “standardised” “teaching” content as seen in Appendix D, RFO should consider allowing its MarComms team some degree of “opportunistic behaviour” such that there is greater creative freedom to produce more interesting content – for example, those posted by other MFOs in the next section – that can enhance customer experience across all potential touchpoints in the inverted U-shaped relationship (Weis et al, 2023). 
+
+#### 4.2.4 Content of Online Posts
+Lastly, an analysis of the contents posted by the MFOs was conducted. In this methodology, ‘media posts’ refer to LinkedIn posts with images, videos, and/or gifs that have been directly embedded within the post (viewers can directly access media on the LinkedIn platform without having to open it on a separate platform) while ‘PDF posts’ refer to LinkedIn posts with PDF documents directly embedded within the post for viewers to directly access and read on LinkedIn’s platform. ‘Articles posts’ refer to LinkedIn posts with hyperlinks included within the contents of the post such that viewers are redirected to a different website/platform when they click on the hyperlink. 
+
+As seen in Figure 6, active engagement rate seems uncorrelated with the number of LinkedIn posts as MFOs like Pitcairn and Farro Capital had two of the highest active engagement rates despite having moderate post quantities. Furthermore, RFO’s active engagement rate was lower than five of its competitors which had a range of different post quantities. These five competitors – namely Leo Wealth, Pitcairn, Farro Capital, Topaz, and Wisdom Family Offices – all have meagre amounts of followers in comparison to RFO (Figure 3). This is a strong suggestion that having more followers and posting more frequently does not lead to higher engagement rates, which implies that followers of family offices prefer quality over quantity of posts.
+
+```{r}
+data_4_2_4 <- read.csv("/Users/JOOYEON/R/lesson/data_4_2_4.csv")
+data_4_2_4 <- data_4_2_4 %>% 
+  mutate(Active_Engagement = 100*Active_Engagement)
+
+pre_4_2_4 <- data_4_2_4 %>% 
+  gather(Media_Posts,PDF_Posts,Articles_Posts, key = type, value = posts)
+# Plot
+pre_4_2_4 %>% 
+  ggplot(aes(x = reorder(MFO, -Total_Posts),
+             y = posts,
+             fill = type)) +
+  geom_bar(stat = "identity") +
+  geom_point(aes(y= Active_Engagement/0.1, fill= "Active Engagement"), size = 2, color = "orange") +
+  scale_fill_manual(values = c("red","blue","green","red")) +
+  labs(title = "LinkedIn: Total No.Posts vs Active Engagement",
+       x = "",
+       y = "No.Posts") +
+  scale_y_continuous(limits = c(0,200),
+                     sec.axis = sec_axis(~. *0.1, name = "Active Engagement(%)")) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "bottom") # Move legend to the bottom
+```
+*Figure 6: Relationship between Total Number of Posts and Active Engagement Rate*
+
+Additionally, there are also key differences in the type of content posted by regional focus. Asia-focused MFOs tend to publish 3.9 PDF posts on average each month compared to North America-focused MFOs’ average of 1.2 PDF posts, while North America-focused MFOs publish substantially more media and hyperlinks at a monthly average of 32 media posts and 38.4 articles posts in contrast to Asia-focused MFOs’ 9.4 and 8.6 posts, respectively (Figure 6). This could be due to cultural differences in the differing locales regarding content preferences and interests, which are important considerations for RFO’s future expansion plans. For instance, Asian followers may prioritise the convenience of reading a report within the same platform which could explain Asia-focused MFOs’ higher quantities of PDF posts compared to their North American counterparts who post PDF reports in their websites connected to LinkedIn by hyperlinks. 
+To find out why certain MFOs were able to defy the numerical odds and achieve higher active engagement rates, the following paragraphs will take a deep dive into these MFOs’ LinkedIn content.
+
+To start off, it would be useful to analyse Pitcairn which has the highest active engagement of close to 14% despite its moderate quantity of posts (Figure 6) and low follower count (Figure 4). In-depth analysis of Pitcairn’s monthly engagement reveals that engagement garnered from its media posts accounts for most of the engagement rate (Figure 7). As Pitcairn focuses more than 50% of their posts on media content (Figure 7), it seems that the strategy has paid off for the MFO. 
+
+```{r}
+data_4_2_4_2 <- read.csv("/Users/JOOYEON/R/lesson/data_4_2_4_2.csv")
+
+pre_4_2_4_2 <- data_4_2_4_2 %>% 
+  gather(Media,PDF,Articles, key = type, value = value) %>% 
+   group_by(Month) %>%
+  mutate(P = 100*value / sum(value)) %>% 
+  arrange(Month) %>% 
+  mutate(type = factor(type, levels = c("Media","Articles","PDF")))
+
+# Plot
+pre_4_2_4_2 %>% 
+  ggplot(aes(x = Month, y = P, fill = type, group = type)) +
+  geom_area(alpha = 0.6, position = 'stack') +
+  scale_fill_manual(values = c("red","blue","green")) +
+  labs(title = "Pitcairn's Monthly Engagement by Type of Content",
+       y = "Contributions of Each Content to Overall Engagement (%)",
+       x = "Time Period") +
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 0, hjust = 1),
+        legend.position = "bottom") # Move legend to the bottom
+```
+*Figure 7: Pitcairn's Monthly Engagement Rate by Type of Content Posted*
+
+Beyond genre, specific messages and themes contained within the posts seem to play a significant role in engagement too. Pitcairn’s LinkedIn media posts contain interesting content beyond the usual investment advice “teaching” content that most MFOs, including RFO, posts. Instead, Pitcairn seems to focus on the human aspect – which has been defined as the “soft” psychological aspects of motivations, communication, trust, leadership, and organisational culture in the Japanese book, “A Beginner’s Guide: Organisational Development” (Taku, 2019) – of its family office. For instance, communication seems to be a central theme that is frequently conveyed through the numerous dialogues that they had and posted on LinkedIn, which highlights the MFO’s collaborative culture. The smiley faces and diversity in backgrounds as seen from posts with photographs of employees (Pitcairn, 2023) suggests that there is an inclusive and enjoyable culture which could draw in more engagement as there may be higher resonance with its followers, especially those looking to join Pitcairn. Similar “soft” human aspects in marketing content strategy can also be seen across the better-performing MFOs, ranging from posts that share about the MFOs’ big meal gatherings to celebrate their employees’ individuality and various cultural events (Farro Capital, 2023) to interesting events like movie premieres (Topaz Family Office, 2023).
+
+Besides the obvious lessons drawn from the top performers, there are also plus points that RFO can pick up from other MFOs especially with regards to marketing strategies for talent acquisition. For instance, Bessemer Trust has a phenomenally successful strategy of reposts on media posts that share about their interns (Bessemer Trust, 2023-a) which garners increasing attention from these interns’ social media circle and thus access to a future talent pool. The high number of likes garnered from Bessemer trust’s media post about welcoming and introducing new employees (Bessemer Trust, 2023-b) also celebrates the individuality and achievement of its employees while hinting to its talent pool about the type of people that the MFO is looking for, which may be a potential area for improvement in RFO’s current marketing strategies. Hence, there may be gaps in RFO’s current content strategy that could be overcome by adapting some of the successful marketing strategies that are currently employed by its competitors.
+
+### 4.3 Candidates
+A candidate analysis was conducted to identify potential inefficiencies within the recruitment process that led to RFO’s lower-than-satisfactory recruitment conversion rate, with knowledge that the Talent Acquisition team has yet to develop a prototype of an ideal top talent who is aligned with the organisation’s strategic goals and values. The analysis aims to increase the candidate conversion rate and recruitment turnaround time by decreasing the likelihood of skill mismatch in the recruitment phase. We attempt to attract and recruit qualified RMs to achieve the group target of a 200% increase in headcount size in the next 18 months, in alignment with RFO’s expansion goals of attracting new private wealth.
+
+Candidate conversion rate refers to the percentage of applicants successfully converted into RFO employees. Recruitment turnaround time refers to the duration taken in the recruitment cycle from job opening to employee onboarding. An overview of the candidate analysis can be found in Figure 8.
+
+![*Figure 8: Overview of Candidate Analysis Process*](image14.png){width=70%}
+
+#### 4.3.1 Skill Mismatch in the Recruitment Phase
+We identified skill mismatch as a key factor leading to low recruitment conversion rates in RFO. Specifically, vertical skill mismatch occurring in RFO’s recruitment phase refers to the difference between the skills of an ideal candidate RFO envisions to fulfil a key position, and the skills of a candidate who may be underqualified to apply for RFO recruitment (Boksic, 2022). This could substantiate RSM’s research findings suggesting that 50% of businesses were unable to find employees with the skill sets sought after, after surveying middle market business leaders across a range of industries (RSM, 2022). The difficulty in attracting qualified employees is likely exacerbated in niche industries such as Family Offices, given the smaller talent pool of highly qualified and experienced individuals with the right fit for RFO.
+
+This amounts to a costly inefficiency in the talent acquisition process, when the recruitment team spends time, manpower and monetary resources to screen and assess underqualified candidates, only to reject their applications in the final selection phase. We interviewed RFO’s Talent Acquisition Director, Gerda, and identified two key limitations that led to this inefficiency: the difficulty in evaluating key competencies required of a top-performing RM, and the inability to articulate required competencies to potential candidates.
+
+**Evaluation of Key Competencies of a Relationship Manager** 
+An RM manages unique responsibilities and holds an atypical job role that is highly specialised and specific to Family Offices. Given the low generalisability of this niche sector, the identification of key competencies required by RMs is more cumbersome when more resources are required in predicting essential skills of RMs to align with the long-term strategic goals of RFO. Competencies refer to the knowledge, skills, abilities, and behaviours that are required of an employee to achieve high-performance (Freifeld, 2016). Unlike common job roles within mundane industries, such as Accountancy and Engineering, the ‘Relationship Manager’ job role is absent from the Singapore SkillsFuture Skills Frameworks which is meant to provide key sectoral information, career pathways, job roles and skills in line with the Industry Transformation Maps (SkillsFuture, 2023). It is inevitable for RFO to critically evaluate the prototype of an ideal top talent to effectively invest only in critical job applications from qualified and experienced candidates who encapsulate a higher likelihood of recruitment conversion. The Talent Acquisition team can consider reviewing strategies such as the competency-based job analysis to develop an internal sample portfolio of the ideal RM with key competencies required to excel within the organisation. 
+
+**Articulation of Key Competencies to Potential Candidates**
+A leading cause of skill mismatch in the recruitment process is the inability of the organisation to communicate key competencies required of an ideal candidate to potential applicants, who are encouraged to fulfil all required competencies listed in the job description before submitting a job application. Traditionally, a well-crafted job description was sufficient to provide potential candidates with an overview of the job role to determine if they have relevant skills to perform on the job (Prescott, 2022). While posting accurate job descriptions remains crucial, RFO should consider expanding the number of communication channels between the Talent Acquisition team and potential candidates through existing online engagement platforms such as LinkedIn. Specifically, the MarComms team may find value in increasing marketing efforts that can reflect in-demand skills and qualities of top-performing RMs in RFO to attract similarly qualified talents. Posts that can display organisational culture may also promote person-organisation fit, supplementing RFO’s search for a qualified talent who is likely to fit in. This strategy will require the development of interdependence between Talent Acquisition and MarComms departments in RFO with an accurate alignment of the ideal RM candidate portfolio. 
+
+#### 4.3.2 Barriers to Attract Top Candidates
+We intend to delve into the lifestyle preferences and potential barriers to attracting and retaining ideal RM candidates who have the potential to succeed in RFO. To obtain crucial insights on these top talents’ internal motivations and common points of hesitation when applying to join Family Offices, we interviewed the Talent Acquisition Director, Gerda. We discuss two key limitations that have been identified to greatly hinder the recruitment process and decrease the candidate conversion rate, which must be resolved: the unwanted financial instability when working in Family Offices, and the general lack of knowledge on RFO.
+
+**Unwanted Financial Instability in RFO**
+Based on RFO’s statistics, most of the potential top talents have years of experience in private banks. Compared to private banks, RFO adopts the entrepreneurial mindset where employees strive under a more volatile job nature. Candidates who have been comfortable with the stable high base pay in private banks will face a key challenge when they make the decision to receive a riskier commission-based pay at RFO. This limitation is problematic on a larger scale across the entire Family Office industry where monetary benefits are less attractive in such aspects. However, potential top candidates should remain well informed on other non-monetary benefits as a successful RM, which include a great work-life balance with less pressure and more flexibility to fulfil achievable goals. The MarComms team can review marketing efforts in communicating these unique benefits of working in RFO.
+
+**Lack of Knowledge on RFO**
+As a MFOs present in various parts of Asia, RFO has established a professional reputation in the industry. However, the niche industry that is slowly progressing in Singapore generally remains as an unfamiliar concept to candidates who lack in-depth knowledge on the big players in the market. Based on RFO’s statistics, there is low candidate awareness of RFO given the low rates of application from the ideal top talent demographic. On the contrary, RFO’s Talent Acquisition team mostly initiates the connection with ideal candidates for a recruitment conversation, where candidates are then exposed to RFO’s background and strategic goals. Increasing the overall awareness of RFO’s industry dominance is crucial in attracting talent inflow, and more avenues to widen RFO’s networks will be beneficial.
+
+### 4.4 Collaborators
+RFO has successfully fostered collaborations with prominent financial institutions, expanding its network and expertise. However, there is a promising opportunity for deeper engagement, particularly with local tertiary education institutions like the National University of Singapore (NUS). NUS's appeal to top students locally and internationally presents an ideal platform for RFO to engage with future wealth management professionals. By establishing partnerships with NUS, RFO can help bridge the gap between academia and the wealth management industry, educating students about the benefits of family offices while dispelling common misconceptions. This collaborative effort not only enriches the talent pipeline but also promotes a better understanding of the value that family offices bring to the evolving financial landscape.
+
+This can be modelled after RFO’s existing partnerships with tertiary education institutions in Hong Kong, exemplified by the firm’s contribution as a donor to the Hong Kong University Business School Future Leader Scholarship Programme. Additionally, RFO also serves as an industry partner for The Hong Kong University of Science and Technology Master of Business Administration programme, fostering a dynamic exchange of knowledge and insights between wealth management experts and student talents. These collaborations reflect RFO’s commitment to nurturing talent and promoting innovation within the financial sector while reinforcing their dedication to educational initiatives that drive excellence in wealth management practices.
+
+### 4.5 Climate
+#### 4.5.1 Political and Regulatory Environment
+RFO operates in a political and regulatory environment influenced by climate change concerns. The Monetary Authority of Singapore (MAS) introduced changes to the Fund Tax Incentive Schemes for Family Offices on 5 July 2023, promoting investments in climate adaptation and mitigation as well as philanthropic initiatives. This aligns with RFO's commitment to sustainable wealth management and reflects the growing importance of climate-related considerations in the financial industry.
+
+#### 4.5.2 Economic Environment
+The global economic environment is marked by elevated inflation rates, central bank interest rate adjustments, and macroeconomic uncertainties. These factors have prompted UHNWI to seek alternative investment opportunities, including real estate, private debt, and digital assets. RFO's nimble response capabilities enable it to cater to these evolving investment preferences, offering tailored solutions to navigate the uncertain economic landscape.
+
+#### 4.5.3 Social and Cultural Environment
+Geopolitical uncertainties in Greater China have driven UHNWI from the region to relocate their wealth to Singapore. This trend reflects the social and cultural environment in which individuals seek safe havens and strategic asset diversification in Singapore amid geopolitical instability. RFO's presence in Singapore positions it as a trusted partner for East Asian clients navigating such challenges, reinforcing its role as a wealth management leader.
+
+#### 4.5.4 Technological Analysis 
+RFO has embraced technological innovation to stay at the forefront of the industry. The introduction of Asia's first digital family office, Revo Digital Family Office, underscores its commitment to leveraging technology for enhanced wealth management. This platform offers digital asset and wallet aggregation, independent digital asset management, private wealth advice, and gatekeeper services. RFO's forward-thinking approach aligns with the evolving technological landscape, providing clients with innovative solutions for succession planning and wealth management in the digital age. 
+
+## 5 Recommendations
+Through our holistic and comprehensive situation analyses in Section 4, we came up with five overarching recommendations for RFO as elaborated in the following paragraphs.
+
+### 5.1 Competency-Based Job Analysis
+In our Candidate Analysis (Section 4.3), we found the need for Talent Acquisition team to engage MarComms team to produce content reflective of the skills and key competencies required of a successful RM that can be communicated to different applicant profiles who may be interested to join RFO. We recommend the Talent Acquisition team to develop a competency-based candidate analysis framework that can succinctly highlight key skills and competencies required of an ideal candidate, to form clear market segmentations for LinkedIn marketing posts. The MarComms team can create content highlighting RFO’s organisational culture based on the identified abilities and traits – for example, posting pictures that display a culture appreciative of the entrepreneurial mindset. We intend for marketing efforts to attract applicants who exhibit the required competencies and align with RFO’s culture.
+
+A strategic and proactive method to achieve an effective talent acquisition process requires the Talent Acquisition team to develop a streamlined profile of their ideal candidates to fill key positions, based on technical needs and cultural fit (RSM, 2023). Using a competency-based job analysis, RFO can evaluate and predict the required knowledge, skills, abilities, and other behaviours essential for a top performing RM.
+We target established RMs who are highly qualified and experienced in relevant fields. The competency-based job analysis covers the technical needs and skill sets required of an ideal RM for RFO, and other abilities and personal traits of an ideal RM that will likely experience cultural fit with RFO. The Talent Acquisition team can then easily identify these skills and competencies amongst applicants through a standardised method.
+
+#### 5.1.1 Technical Needs
+To best define the technical needs of the ideal candidate, heavy utilisation of job analyses and evaluations of the optimal levels of applicant qualifications required may provide an effective guide for RFO. A portfolio sample can be created by forming three evaluative levels within each factor of applicant qualification to show clear distinctions amongst candidates with early, mid, to late career pathways. Subsequently, weights are attached to each factor based on the significance and importance of a top talent possessing the qualifications. Applicant will be scored on each factor based on reliable analysis of their resumes. Each factor will then be multiplied by their corresponding weight, thereafter, obtaining the total score through summation. Through this reliable quantitative analysis, RFO will be able to compare and determine the better or ideal candidate who is more likely to succeed. This analysis should be the first step of the recruitment process to identify potentially qualified candidates, to be considered for further recruitment selection tests.
+
+We identified several qualifications commonly highlighted by the Talent Acquisition team through two main avenues: 1. RFO’s existing recruitment posts on LinkedIn (Raffles Family Office, 2023) featuring job specifications that indicate levels of knowledge, skills, and abilities required; and 2. RFO’s internal WhatsApp blasts on new hires which feature new employees’ bibliography and qualifications (Appendix E). With the assumption that these qualifications cover the critical level of technical needs required by top-achieving talents, we aim to sharpen the evaluative levels of each qualification to increase the accuracy and reliability of candidate selection.
+
+The identified list of applicant qualifications to assess top candidates suitable for recruitment as an RM in RFO include years of experience as a RM, previously managed Assets under Management (AUM), awards, financial goal per year, global work experience, thorough understanding of RFO market landscape, and fluency in English and one other Asian language. Additionally, having an education level of a bachelor’s degree or higher, and the attainment of the RNF license, are mandatory guidelines for all applicants.
+
+RFO candidate portfolio sample is prototyped in Figure 9, following a general guideline that applicants scoring more than three total points will be considered for further recruitment selection tests. Applicants scoring the maximum score of five will be considered as an ideal candidate to be recruited into RFO. We also developed two distinct candidate profiles for Anna (Figure 10) and Bryan (Figure 11), to demonstrate complexities in the technical needs analysis and select the optimal candidate.
+
+![*Figure 9: RFO Candidate Portfolio Sample*](image8.png){width=70%}
+
+![*Figure 10: Candidate Profile A, Anna*](image4.png){width=70%}
+
+![*Figure 11: Candidate Profile B, Bryan*](image5.png){width=70%}
+
+
+The candidate profile templates promote a clear and efficient method to analyse applicants’ technical abilities based on varying importance. The analysis of Anna and Bryan presents the more qualified candidate with a higher total score of 3.8 (Bryan) compared to 2.8 (Anna). The key point to note in these profiles is that Bryan managed to accumulate a higher score despite being worse off than Anna in several factors, such as financial goal per year and amount of global work experience. Furthermore, Anna should be rejected after this initial screening process, given that her capabilities have not met the minimum requirements for RFO recruitment.
+
+The MarComms team can also create customisable content to attract the interests of ideal candidates, such as Bryan who has previously managed $60M AUM. LinkedIn articles can display RFO’s diversification into eight asset classes, which is likely to impress Bryan. Given that Bryan is in the mid-tier for previously managed AUM, availability of these asset classes indicates the opportunities for Bryan to explore more investment options that may not be provided in other organisations, hence creating a competitive edge for RFO against its competitors. 
+
+#### 5.1.2 Cultural Fit
+To best define the personality traits of an ideal candidate, heavy utilization of competency-based evaluation identifies the optimal behavioural level required to perform exceptionally on the job in the long-run. There are existing models used to derive candidates’ personality traits and work-related values, such as the BIG-Five Personality Model which tests extraversion, neuroticism, agreeableness, conscientiousness, and openness to experience. While these factors are crucial indicators of a successful RM, RFO can create its own analyses based on work-related personal characteristics that are likely to form an internal alignment to the organisation’s strategic goals. Traditionally, companies will interview top-performing Subject Matter Experts (SMEs) to identify key competencies demonstrated on the job, which are then validated by their immediate supervisors. RFO can consider engaging with existing top performing RMs who are well-versed in their work requirements with in-depth knowledge of the personality traits needed to excel on the job.
+
+Our team participated in the “Introduction to Family Office Fireside Chat”, a collaborate event organised by the NUS Asset and Wealth Management Club and RFO in late September. This fireside chat served as a conduit through which RFO aimed to offer NUS students deeper insights into the family office industry. Distinguished speakers from RFO, including its Co-founder and Managing Partners, generously shared valuable information about the industry's culture, requisite skill sets, and available career opportunities during the session.
+
+With thorough analysis of the common recurring themes that the Co-founder, Kendrick Lee, mentioned, we identified several personality traits commonly highlighted by the Talent Acquisition team. The identified list of work-related personal characteristics to assess top candidates suitable for recruitment as an RM in RFO include decision making, motivation, work-life balance, creative problem-solving, passion, relationship management, entrepreneur mindset, independence, and risk management. To enhance the cultural fit analysis, we developed a sample Competency Model (Figure 12) that can aid MarComms with communication to potential candidates.
+
+![*Figure 12: Sample of Competency Model for RFO's Candidate Analysis*](image6.png){width=50%}
+
+The Competency Model is a suitable example of a tool that can be used to strengthen inter-departmental communication, between the Talent Acquisition and MarComms teams in this case. To form a robust recruitment process, Talent Acquisition team must rely on MarComms team to communicate RFO’s vision of an ideal candidate to potential applicants through suitable channels. The Competency Model provides simple and clear directions for marketing products to highlight key qualities that are reflected in RFO, and key competencies required to fulfil the responsibilities of an RM successfully. The MarComms team will likely experience reduced stress after receiving purposeful tools that can be directly incorporated into marketing efforts, to aid the recruitment process.
+
+A behavioural competency indicators sample can be created to compare and determine the better or ideal candidate who demonstrates stronger competencies relevant to working as an RM in RFO. The behavioural competency indicator forms five evaluative levels within each work-related personal characteristics to show clear distinctions amongst candidates who display foundational to expert levelled competencies. Subsequently, weights are attached to each factor based on the significance and importance of a top talent possessing the qualifications. Candidates can be assessed through unstructured interviews, or simulation tests when pressured to display such behaviours. 
+
+RFO Behavioural Competency Indicators sample is prototyped in Figure 13, following a general guideline that applicants scoring level three and above will be considered for further recruitment selection tests. Applicants scoring the maximum level five will be considered as an ideal candidate to be recruited into RFO.
+
+![*Figure 13: Sample of RFO's Behavioural Competency Indicators*](image7.png){width=70%}
+
+### 5.2 Optimisation of LinkedIn Posts
+In our analysis of digital marketing, particularly in the context of RFO’s LinkedIn presence, we found that RFO currently boasts a relatively high follower count. However, as mentioned above in Figure 4, RFO’s LinkedIn is garnering lower active engagement rates than expected of its follower count. There exists untapped potential to enhance its LinkedIn posts strategically to amplify brand recognition through heightened engagement. 
+
+It is important to note that engagement is particularly important for LinkedIn as it creates a chain reaction. The importance of the network effect for LinkedIn lies in the dynamic interplay of individual posts within its social ecosystem. When one interacts on other’s posts, their network of followers will be shown the post even if they are not directly connected to the content creator. This phenomenon contributes to virality, when one engages with and transmits content within their unique Personal Networks (Devanur, 2022). As users connect and communicate within their networks, each new connection becomes a potential audience and content generator. The network effect on LinkedIn amplifies the reach and impact of individual posts, fostering a reciprocal relationship where every additional node enhances the network's collective value.
+
+Hence, after examining and analysing the MFO landscape on this platform, including the content strategies employed, we identified key areas for improvement to increase engagement. This allowed us to formulate strategies for RFO to optimize their LinkedIn content to support the Talent Acquisition team, increase its presence on LinkedIn, and align more closely with the preferences of its target audience. 
+
+#### 5.2.1 Incorporate Media into Posts
+Firstly, we recommend RFO to incorporate more media into their posts. Along with our prior analysis in Section 4.2.4, research conducted by LinkedIn also indicated that inclusion of images typically leads to a two times higher comment rate while videos garner 5x more engagement on the platform. (LinkedIn Marketing Solutions, 2023). Leveraging these visual elements into RFO’s content strategy can enhance RFO’s engagement and align itself with the observed preferences of the LinkedIn audience.
+
+Moreover, considering that the potential talent pool and UHNWI are frequently pressed for time, they may not have the bandwidth to process complex or time-consuming information. Therefore, incorporating images could become a valuable strategy for condensing substantial volumes of information into a format that is both easily digestible and quickly comprehensible for users. This approach aligns with the efficient communication preferences of RFO’s target audience of busy and high-profile individuals, allowing them to enhance the effectiveness of content delivery.
+
+#### 5.2.2 Post Frequency 
+Secondly, we recommend RFO to increase its post frequency. Even though our findings in Section 4.2.3 suggests that having more posts might not correlate with an equal exponential increase in engagement, we are recommending RFO to increase its weekly postings instead of having a monthly target. This is because research indicates a direct correlation between posting frequency and audience growth on LinkedIn. LinkedIn pages that post weekly have 5.6x more followers than Pages that post monthly. Moreover, these LinkedIn pages experience a remarkable growth trajectory for LinkedIn pages, with their following expanding at a rate that is seven times faster compared to pages that post monthly (LinkedIn Marketing Solutions, 2023). Hence, RFO can maintain similar overall number of posts published on average each month but spread it across to increase weekly coverage. Furthermore, consistent posting not only keeps audience engaged but also allow for more opportunities to collect valuable data for analysis and provide more insights into the preference of RFO’s target audience. 
+
+#### 5.2.3 Social Media Calendar
+In summary, with regards to the optimisation of its LinkedIn posts, we recommend RFO to incorporate media in its posts and increase its post frequency. To facilitate this, we propose the establishment of content calendar for LinkedIn, specifying the timing and nature of each post. Hence, incorporating the solutions we have recommended, we suggest the following content calendar (Figure 14). This approach would assist RFO in maintaining a diverse range of content that is both informative and engaging, while also authentically reflecting the values and culture of the family office. By identifying key messages and themes, RFO can craft a narrative that consistently communicates its values and mission.
+
+![*Figure 14: Suggested Social Media Calendar*](image9.png){width=70%}
+
+In the above suggested content calendar, we have categorized posts into four distinct types: Culture Fit, RFO Insights, Job Postings, and Podcasts. Research indicates that optimal days for LinkedIn posts are Tuesday, Wednesday, and Thursday (CoSchedule, 2022). Consequently, the majority of our suggested posts align with these days. Specifically, Culture Fit posts are recommended almost weekly on Tuesdays and Thursdays, while RFO Insights are suggested to be shared bi-weekly every Wednesday. Although Sunday is traditionally not considered an ideal day for LinkedIn engagement, we propose posting Podcast content on Sundays to provide a more light-hearted and enjoyable experience for the audience.
+
+Expanding on the rationale behind categorizing posts into these four distinct types. 
+
+Firstly, **Culture Fit**, as mentioned in the interview with the Talent Acquisition Director, Gerda, there is a general lack of knowledge on RFO which hindered the recruitment process and decrease the candidate conversion rate (Appendix B). To address this, we recommend a diversified range of content that emulates its competitors’ successful content strategies (Section 4.2.4), including employee sharing, insights into life at RFO, and exploration of RFO's diversity. These posts aim to illuminate RFO's distinctive culture, offering potential hires a comprehensive understanding. Additionally, our suggestion includes content featuring company events, gatherings, and event insights. Our primary research, conducted during competitor analysis, indicates that such content tends to generate the highest engagement on LinkedIn. Observing the success of incorporating "soft" human aspects into marketing content strategies among top-performing organizations, we encourage RFO to adopt and integrate similar content into its strategy. This approach not only aligns with industry best practices but also serves to elevate awareness of RFO's unique culture.
+
+Secondly, **RFO Insights**. This is something that RFO has been consistently posting, although these posts may not generate as much engagement as those focusing on the "soft human aspect," they communicate expertise, experience, and a deep understanding of the industry to the audience. By providing valuable information and guidance, RFO can establish itself as a reliable source, fostering trust with both existing and potential clients.
+
+Thirdly, **leveraging the LinkedIn platform to share job postings** is a strategic move for RFO. This approach allows RFO to extend its reach to a broader audience, tapping into the professional network on LinkedIn. By showcasing job opportunities, RFO can attract talent, enhance its employer brand, and connect with professionals who align with its values and goals. 
+Lastly, the rationale behind **incorporating podcasts** into RFO's content strategy will be discussed in greater detail later in this report.
+
+It is important to note that periodic reviews of the content strategy's effectiveness are crucial. With adjustments to the content calendar based on analysing engagement metrics, follower growth, and the resonance of different content types can allow RFO to stay dynamic and continuously refine its approach for optimal impact. 
+
+### 5.3 Content Strategy
+#### 5.3.1 Improve Content Distribution Strategy by Utilizing LinkedIn Ads
+In pursuit of our project's objectives to boost awareness within the company and industry among prospective talents and clients, LinkedIn recommends utilizing their specialized LinkedIn Ads features designed to enhance brand recognition. In connection with section 5.2.2, it is important to note that maintaining a high frequency of posts plays a crucial role in nurturing engagement with our target audience. This can be further reinforced by leveraging LinkedIn Ads features, which enable us to extend our outreach efforts, for instance, by ensuring that RFO's posts are prominently displayed on the feeds of our intended audience. The efficacy of LinkedIn Ads is also corroborated by a survey conducted by WebFX (2023), revealing that a significant majority of businesses, precisely 57%, report satisfaction with the return on investment (ROI) they achieve through their LinkedIn advertising campaigns. The following are the LinkedIn Ads strategies that our team recommend to RFO to increase brand recognition: 
+
+**1.	Sponsored InMail**
+
+LinkedIn's Sponsored InMail feature is a potent tool for direct engagement. RFO can leverage personalized messages to directly connect with potential talent and prospective clients. These tailored messages can serve to illuminate RFO's distinctive value propositions, showcase available career opportunities, or extend invitations to exclusive industry events. This strategic outreach lays the groundwork for cultivating meaningful relationships with prospective candidates and clients, thereby elevating the brand's standing within the industry.
+
+**2.	LinkedIn Display Ads: Carousel Ads (Swipe-able Series of Cards)**
+
+Strategically positioning display ads across LinkedIn's expansive platform is a key element of RFO's advertising strategy. These display ads effectively place RFO's brand and services within the purview of users' homepages and relevant LinkedIn Groups (Figure 15). Whether spotlighting RFO's portfolio of services, sharing success stories, or beckoning users to participate in webinars and exclusive events, these display ads fortify the brand's presence and credibility within the wealth management industry. By reaching a targeted audience, we expect that RFO can maximize the impact of its advertising efforts.
+
+![*Figure 15: RFO Carousel Ad Mock-up*](image10.png){width=70%}
+
+**3.	LinkedIn Video Ads**
+
+The dynamic appeal of video can be harnessed through LinkedIn Video Ads. These ads offer a unique opportunity to convey RFO's brand narrative in a compelling manner. RFO can utilize video to provide behind-the-scenes glimpses into the organization's culture, introduce key team members, or elucidate the unique advantages of affiliating with RFO. Engaging video content effectively captures the attention of potential talent and clients, creating a deeper and more meaningful connection. This form of storytelling can be a powerful driver of brand recognition and talent engagement.
+
+#### 5.3.2 Utilizing Podcasts
+Considering that the RFO’s Talent Acquisition team views lack of awareness of the family office industry by potential candidates as the biggest challenge they face, we recommend the launch of a podcast to discuss industry trends and share insights about company culture (Figure 16). RFO can gain valuable insights from the 'Family Office Podcast,' a diverse program helmed by Richard C. Wilson, the CEO of Family Office Club & Centimillionaire Advisors, LLC. This podcast offers an array of content, such as client case studies, real-world examples, factual information, current trends, and engaging interviews with family offices, all providing a comprehensive perspective on the world of UHNWI. Notably, the podcast delivers between three to seven episodes each week, featuring interviews, discussions on private investor strategies, and enlightening insights related to wealth management. With such efforts, RFO would be able to familiarize the potential talents with the industry and those talents would become more confident about the industry itself, too. This would increase candidate conversion rate to the level that the current Talent Acquisition team is targeting. 
+
+![*Figure 16: Sample Weekly Podcast Poster*](image11.png){width=50%}
+
+#### 5.3.3 Posting Culture-related Content
+RFO can enhance its corporate image by mirroring North American MFOs, particularly their proficiency in showcasing company culture on platforms like LinkedIn. These MFOs excel at visually representing their unique attributes, as seen in the fireside chat where RFO highlighted its entrepreneurial and flat-hierarchical nature. 
+
+Drawing from Pitcairn’s approach in Section 4.2.4, RFO could boost engagement by highlighting its welcoming culture through diverse and inclusive content, diverging from the typical investment advice. Pitcairn’s content focuses on the ‘soft’ aspects of their organization, emphasizing communication and a collaborative culture, as illustrated through their regular employee features and dialogues on LinkedIn. Adopting a similar strategy could enhance RFO’s appeal and resonance with its audience, aligning with the company’s desired image.
+
+Furthermore, placing emphasis on creating content related to sustainability and philanthropy not only highlights the company's commitment to responsible business practices but also resonates with socially conscious audiences. Family offices often have a mission-centric focus, and as a result, they frequently use content as a preferred tactic to share their views on public policy or draw attention to specific causes. For instance, 1888 Management LLC of Charles Koch engaged in a sponsored-content campaign on Axios, publishing three different articles highlighting the company's contributions to COVID-19 response efforts. This example underscores the significant role that content plays in the strategic communication efforts of family offices. In conclusion, culture-related contents have the potential to cultivate strong community bonds and nurture mutually beneficial relationships, ultimately enhancing both RFO's brand presence and its professional network.
+
+### 5.4 Sponsorships and Collaborations 
+To capitalize on the network effect and enhance its online presence, RFO should adopt a proactive approach by collaborating with local universities in Singapore. Metcalfe's Law illustrates that as user numbers increase, so does the network's value. 
+
+To enhance engagement, RFO can explore the possibility of co-organizing corporate events with its business partners and actively engaging with student-led clubs from nearby higher education institutions. Collaborating with these universities to establish internship programs, conduct workshops (Figure 17), or offer guest lecture opportunities serves a dual purpose: it not only creates a talent pipeline but also enhances RFO's reputation among students. These collaborative endeavours, often facilitated through sponsorship and cooperation, help raise awareness about the family office industry, ultimately broadening the pool of potential candidates.
+
+For instance, a recent public event organized by RFO in partnership with the NUS Asset & Wealth Management Club proved highly beneficial. It allowed students to gain a deeper understanding of family office businesses, acquire insights into real estate investment outlooks, and explore the growing importance of digital assets. Given the niche market for family offices in Singapore, such initiatives play a pivotal role in educating students about the industry, thereby ensuring that RFO's brand remains prominent in the minds of top-tier talent.
+
+![*Figure 17: Sample RFO Workshop Poster with NUS*](image12.png){width=50%}
+
+### 5.5 Facilitating Communication between MarComms and Talent Acquisition Teams
+From the interview with the MarComms team and Talent Acquisition team, we have found out a communication gap in between these teams in terms of post contents on LinkedIn. To bridge the communication gap between the MarComms and Talent Acquisition teams and enhance the management of the company's LinkedIn account, we recommend implementing two key strategies. Firstly, establish a routine of cross-functional meetings, ensuring that these gatherings become a staple in the collaboration between the two teams. During these meetings, both sides can discuss upcoming job openings, the essential skills required, and brainstorm ways in which marketing can actively support the hiring process. This will facilitate alignment between content strategies and recruitment objectives. 
+
+## 6 Evaluation of Proposed Solutions
+Our team’s recommendations align with RFO’s strategy of focusing on low-hanging fruit to achieve maximum results with minimal effort. We have evaluated our recommendations based on three factors: Candidates, Cost, and Time to Impact. Evaluation of each recommendation is summarised in Figure 18. 
+
+![*Figure 18: Summary of Evaluation of Recommendation*](image13.png){width=70%}
+
+**Competency-Based Candidate Analysis Framework**
+
+This strategic approach is designed for mid-to-late career candidates and requires the Talent Acquisition team to develop a framework that succinctly showcases key skills and competencies required of an ideal candidate through specific job analysis on RM job roles and responsibilities. As this is an in-house process, we believe that it offers a cost-effective solution with a brief time to impact once established. 
+
+**LinkedIn Post Optimization**
+
+Overseen by the MarComms team, this recommendation is tailored for early-to-mid career individuals. By optimising the structure of RFO’s LinkedIn posts using our proposed refined posting strategies, the cost is low as it only requires slight tweaking of RFO’s existing content. Short term time to impact is expected. 
+
+**LinkedIn Content Optimization**
+
+In conjunction with post optimization, this recommendation is also overseen by the MarComms team and caters to early-to-mid career candidates. We have estimated a moderate cost for this recommendation. For LinkedIn advertisements, we advocate an allocation of about US$500 per month. This is a numerical figure backed by thorough research into typical expenditure on paid ads. A WebFX (2023) survey sheds light on average spending in LinkedIn advertising campaigns, revealing that 48% of companies spend between US$0.00 and US$500.00. Our team suggests that RFO should diversify the spending across Carousel Ads and Sponsored InMail campaigns (Appendix F). It is crucial to note, however, that these funds need not be evenly split.
+
+As a starting point, we propose a modest budget for the initial quarter, using the subsequent period's allocation as an adjustable factor based on the performance and effectiveness of the LinkedIn Ads function. This approach ensures that RFO leverages sponsored advertising efficiently, optimizing spend and maximizing impact.
+
+With a moderate cost estimate, the expected impact materializes over a medium-term duration, approximately one year. This strategy works in synergy with posting optimization to amplify its effects of gaining brand awareness. 
+
+**Collaborations with Local Universities**
+
+This strategy is designed to engage early-career prospects by introducing them to the family industry, with RFO positioned as a prominent thought leader. It is a low-cost initiative given that RFO is already conducting something similar with NUS Asset and Wealth Management Club. However, it entails a longer-term time to impact as there is a need to wait for students to progress in their careers till, they become a mid-to-late career candidate (RFO’s ideal candidate) and is contingent upon the students' entry into their professional journeys.
+
+**Interdepartmental Communication**
+
+This internal strategy serves to bridge the communication gap between the MarComms and Talent Acquisition teams. With negligible associated costs and a brief time to impact, this approach relies on internal teamwork to achieve resolutions and enhance communication such that both teams can align their strategies and work towards the common goal of increasing candidate conversion rate. 
+
+Overall, we believe that our recommendations will resonate with RFO’s DNA of creating maximum results with minimum input and capturing low hanging fruits to create true value in growing the firm.
+
+## 7 Conclusion 
+In summary, RFO can leverage on its strategic positioning in the Asian market to solidify its expansion plans as a leading family office with a professional reputation in the industry. Through combined expertise from the Talent Acquisition and Marketing and Communications teams, we recommend the development of five complementing strategies that can effectively increase the candidate conversion rate to achieve RFO’s group target of a 200% increase in headcount in the next 18 months. These strategies are validated by primary and secondary research, customised for the specific business model of RFO through rigorous and comprehensive situation analyses.
+
+Our team resonates with RFO’s strategy of “minimum input, maximum results”, with emphasis on strategy optimisation for effective implications. Ultimately, we recommend RFO to adopt the Kaizen approach for continuous improvement, through regular reviews of key performance indicators to measure the impact of each recommendation. We hope that these recommendations will support RFO’s expansion plans for continuous growth and to remain the leading Asian family office in the future.
